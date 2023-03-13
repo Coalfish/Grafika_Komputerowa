@@ -1,7 +1,7 @@
-var gl;
+var gl
 function start() 
 {
-    alert("StartGL");
+    alert("StartGL")
     let canvas = document.getElementById("canvas3D"); //wyszukanie obiektu w strukturze strony 
     gl = canvas.getContext("experimental-webgl"); //pobranie kontekstu OpenGL'u z obiektu canvas
     gl.viewportWidth = canvas.width; //przypisanie wybranej przez nas rozdzielczości do systemu OpenGL
@@ -44,24 +44,17 @@ function start()
     
     //Opis sceny 3D, położenie punktów w przestrzeni 3D w formacie X,Y,Z 
     let vertexPosition = [
-    //Top
+    //bok
       -1.0, +1.0, -1.0,  -1.0, +1.0, +1.0,  +1.0, +1.0, +1.0, //3 punkty po 3 składowe - X1,Y1,Z1, X2,Y2,Z2, X3,Y3,Z3 - 1 trójkąt
       -1.0, +1.0, -1.0,  +1.0, +1.0, +1.0,  +1.0, +1.0, -1.0,
-    //Left
+    //dol
       -1.0, -1.0, +1.0,  -1.0, +1.0, +1.0,  -1.0, -1.0, -1.0,
       -1.0, -1.0, -1.0,  -1.0, +1.0, +1.0,  -1.0, +1.0, -1.0,
-    //Right
+    //gora
       +1.0, +1.0, +1.0,  +1.0, -1.0, +1.0,  +1.0, -1.0, -1.0,
-      +1.0, +1.0, +1.0,  +1.0, -1.0, -1.0,  +1.0, +1.0, -1.0,
-    //Front
-      +1.0, -1.0, +1.0,  +1.0, +1.0, +1.0,  -1.0, -1.0, +1.0,
-      -1.0, +1.0, +1.0,  -1.0, -1.0, +1.0,  +1.0, +1.0, +1.0,
-    //Back
-      +1.0, +1.0, -1.0,  +1.0, -1.0, -1.0,  -1.0, -1.0, -1.0,
-      +1.0, +1.0, -1.0,  -1.0, -1.0, -1.0,  -1.0, +1.0, -1.0,
-    //Bottom
-      -1.0, -1.0, +1.0,  -1.0, -1.0, -1.0,  +1.0, -1.0, +1.0,
-      +1.0, -1.0, +1.0,  -1.0, -1.0, -1.0,  +1.0, -1.0, -1.0
+      +1.0, +1.0, +1.0,  +1.0, -1.0, -1.0,  1.0, +1.0, -1.0,
+    
+      
     ]
     
     let vertexPositionBuffer = gl.createBuffer(); //Stworzenie tablicy w pamieci karty graficznej
@@ -81,7 +74,7 @@ function start()
      0                         ,0                           ,-(zFar+zNear)/(zFar-zNear)  , -1,
      0                         ,0                           ,-(2*zFar*zNear)/(zFar-zNear) ,0.0,
     ];
-    let angle = 45.0; //Macierz transformacji świata - określenie położenia kamery 
+    let angle = 270.0; //Macierz transformacji świata - określenie położenia kamery 
     let uMVMatrix = [
     Math.cos(angle*Math.PI/180.0),-Math.sin(angle*Math.PI/180.0),0,0, //Macierz Rotacji
     Math.sin(angle*Math.PI/180.0),Math.cos(angle*Math.PI/180.0),0,0,
