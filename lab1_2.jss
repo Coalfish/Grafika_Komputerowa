@@ -44,15 +44,42 @@ function start()
     
     //Opis sceny 3D, położenie punktów w przestrzeni 3D w formacie X,Y,Z 
     let vertexPosition = [
-    //bok
-      -1.0, +1.0, -1.0,  -1.0, +1.0, +1.0,  +1.0, +1.0, +1.0, //3 punkty po 3 składowe - X1,Y1,Z1, X2,Y2,Z2, X3,Y3,Z3 - 1 trójkąt
-      -1.0, +1.0, -1.0,  +1.0, +1.0, +1.0,  +1.0, +1.0, -1.0,
-    //dol
-      -1.0, -1.0, +1.0,  -1.0, +1.0, +1.0,  -1.0, -1.0, -1.0,
-      -1.0, -1.0, -1.0,  -1.0, +1.0, +1.0,  -1.0, +1.0, -1.0,
-    //gora
-      +1.0, +1.0, +1.0,  +1.0, -1.0, +1.0,  +1.0, -1.0, -1.0,
-      +1.0, +1.0, +1.0,  +1.0, -1.0, -1.0,  1.0, +1.0, -1.0,
+      //bok góra
+    0.5,0,0,  0.75, -0.25, 0,    0.25, -0.25, 0, // prawo
+    0.5,0,0,  +0.25, +0.25, 0,    0.75, +0.25, 0, //lewo 
+    0.5,+0,0,  +0.25, -0.25, 0,  +0.25, +0.25, 0,//dol
+    0.5,0,0,  0.75, -0.25, 0,  0.75, +0.25, 0,  //gora
+
+    //bok środek gorny
+    0,0,0,  +0.25, -0.25, 0,    -0.25, -0.25, 0, // prawo
+    0,0,0,  +0.25, +0.25, 0,    -0.25, 0.25, 0, //lewo 
+    0,0,0,  +0.25, -0.25, 0,  +0.25, +0.25, 0,//gora
+    0,0,0,  -0.25, -0.25, 0,  -0.25, 0.25, 0,  //doł
+
+    
+    //bok środek dolny 
+    -0.5,0,0,  -0.75, -0.25, 0,    -0.25, -0.25, 0, // prawo
+    -0.5,0,0,  -0.25, 0.25, 0,    -0.75, +0.25, 0, //lewo 
+    -0.5,+0,0,  -0.75, -0.25, 0,  -0.75, +0.25, 0,//dol
+    -0.5,0,0,  -0.25, -0.25, 0,  -0.25, 0.25, 0,  //gora
+
+    //bok dol
+    -1.25,+0.25,0,  -0.75, -0.25, 0,  -0.75, +0.25, 0, //lewo
+    -1.25,+0.25,0,  -0.75, -0.25, 0,  -1.25, -0.25, 0, // prawo
+    //gora 1
+    0.75,-0.75,0,  0.75, -0.25, 0,    0.25, -0.25, 0,
+    0.25,-0.75,0,  0.75, -0.75, 0,    0.25, -0.25, 0,
+
+    //gora 2 
+    0.25,-1.25,0,  0.75, -0.75, 0,    0.25,-0.75,0,
+    0.75,-1.25,0,  0.25, -1.25, 0,    0.75,-0.75,0,
+    //dol 1 
+    -1.25,-1.25,0,  -0.75, -0.25, 0,  -1.25, -0.25, 0,
+    -1.25,-1.25,0,  -0.75, -0.25, 0,  -0.75, -1.25, 0,
+
+
+
+      
     
       
     ]
@@ -61,7 +88,7 @@ function start()
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexPositionBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertexPosition), gl.STATIC_DRAW);
     vertexPositionBuffer.itemSize = 3; //zdefiniowanie liczby współrzednych per wierzchołek
-    vertexPositionBuffer.numItems = 12; //Zdefinoiowanie liczby punktów w naszym buforze
+    vertexPositionBuffer.numItems = 50; //Zdefinoiowanie liczby punktów w naszym buforze
     
     //Macierze opisujące położenie wirtualnej kamery w przestrzenie 3D
     let aspect = gl.viewportWidth/gl.viewportHeight;
